@@ -85,8 +85,9 @@ Route::middleware(['auth'])->group(function () {
 Route::resource('subscribe', 'Admin\SubscribeController');
 Route::resource('reg', 'Visa\RegController');
 Route::resource('stuLev', 'StuAd\LevelController');
+Route::get('level/{level}/addSub', 'StuAd\SubjectController@addSub')->name('addSub');
 Route::resource('stuSub', 'StuAd\SubjectController');
 
 Route::post('student/Level', 'Recruitement\SearchController@stLevName')->name('stLevName');
 
-Route::get('autocomplete', 'Recruitement\SearchController@autocomplete')->name('autocomplete');
+Route::post('student/Subject/search', 'Recruitement\SearchController@stSubName')->name('stSubName');

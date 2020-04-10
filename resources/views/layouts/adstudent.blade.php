@@ -129,7 +129,7 @@
             </li>
 
             <li>
-                <a href="{{route('title.index')}}" >
+                <a href="{{route('stuSub.index')}}" >
                     <i class="icon-check" style="font-size:20px;color:#ff4000"></i> Subjects
                 </a>
 

@@ -35,11 +35,8 @@
             </div>
 
             <div class="form-group-material">
-            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+            <input class="form-check-input" type="checkbox" name="remember" id="remember" checked readonly hidden>
 
-                <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                </label>
 
             </div>
 

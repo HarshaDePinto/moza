@@ -12,7 +12,10 @@ class CompanyController extends Controller
 {
     public function index()
     {
-        return view('admin.companies.index')->with('companies', Company::orderBy('updated_at', 'desc')->get());
+
+        $bookings1 = Company::all()->pluck('name');
+
+        return view('admin.companies.index')->with('companies', Company::orderBy('updated_at', 'desc')->get())->with('bookings1', $bookings1);
     }
 
     /**

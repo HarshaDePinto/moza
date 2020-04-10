@@ -64,7 +64,7 @@ Mozita &#8211; Visa Services   &#8211; Be Where You Want To Be
                 <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                        <a href="{{route('newZealandVisaStudent')}}">
+                        <a href="#Study">
                                 Study
                                 <i class="fa fa-mortar-board"></i>
                             </a>
@@ -184,7 +184,7 @@ Mozita &#8211; Visa Services   &#8211; Be Where You Want To Be
                     </div>
                     <!-- layer 3 -->
                     <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                    <a class="ready-btn right-btn page-scroll" href="{{route('newZealandVisaStudent')}}">
+                    <a class="ready-btn right-btn page-scroll" href="#Study">
                         Study
                         <i class="fa fa-mortar-board"></i>
                     </a>
@@ -227,7 +227,7 @@ Mozita &#8211; Visa Services   &#8211; Be Where You Want To Be
                     </div>
                     <!-- layer 3 -->
                     <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                        <a class="ready-btn right-btn page-scroll" href="{{route('newZealandVisaStudent')}}">
+                        <a class="ready-btn right-btn page-scroll" href="#Study">
                             Study
                             <i class="fa fa-mortar-board"></i>
                         </a>
@@ -270,7 +270,7 @@ Mozita &#8211; Visa Services   &#8211; Be Where You Want To Be
                     </div>
                     <!-- layer 3 -->
                     <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                        <a class="ready-btn right-btn page-scroll" href="{{route('newZealandVisaStudent')}}">
+                        <a class="ready-btn right-btn page-scroll" href="#Study">
                             Study
                             <i class="fa fa-mortar-board"></i>
                         </a>
@@ -310,7 +310,7 @@ Mozita &#8211; Visa Services   &#8211; Be Where You Want To Be
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline text-center">
             <h2>Study in New Zealand
-            <a class="btn btn-success text-white btn-lg" href="">Register </a>
+            <a class="btn btn-success text-white btn-lg" href="{{route('newZealandVisaStudent')}}">Register </a>
             </h2>
 
           </div>

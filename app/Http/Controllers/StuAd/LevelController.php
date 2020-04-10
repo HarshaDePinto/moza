@@ -15,7 +15,9 @@ class LevelController extends Controller
      */
     public function index()
     {
-        return view('students.admin.levels.index')->with('levels', Level::orderBy('updated_at', 'desc')->get());
+
+        $kl = level::all()->pluck('name');
+        return view('students.admin.levels.index')->with('levels', Level::orderBy('updated_at', 'desc')->get())->with('kl', $kl);
     }
 
     /**

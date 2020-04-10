@@ -9,6 +9,7 @@ use App\Company;
 use App\Applicant;
 use App\Title;
 use App\Student\Level;
+use App\Student\Subject;
 
 class SearchController extends Controller
 {
@@ -39,43 +40,24 @@ class SearchController extends Controller
     public function cpName(Request $request)
     {
         $data = $request->all();
-
+        $bookings1 = Company::all()->pluck('name');
         $companies = Company::where('name', 'LIKE', '%' . $data['name'] . '%')->get();
-        return view('admin.companies.index')->with('companies', $companies);
+        return view('admin.companies.index')->with('companies', $companies)->with('bookings1', $bookings1);
     }
 
     public function stLevName(Request $request)
     {
         $data = $request->all();
-
+        $kl = level::all()->pluck('name');
         $levels = Level::where('name', 'LIKE', '%' . $data['name'] . '%')->get();
-        return view('students.admin.levels.index')->with('levels', $levels);
+        return view('students.admin.levels.index')->with('levels', $levels)->with('kl', $kl);
     }
-    public function autocomplete(Request $request)
+
+    public function stSubName(Request $request)
     {
-        if ($request->ajax()) {
-
-            $data = Level::where('name', 'LIKE', '%' . $request->name . '%')
-                ->get();
-
-            $output = '';
-
-            if (count($data) > 0) {
-
-                $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
-
-                foreach ($data as $row) {
-
-                    $output .= '<li class="list-group-item">' . $row->name . '</li>';
-                }
-
-                $output .= '</ul>';
-            } else {
-
-                $output .= '<li class="list-group-item">' . 'No results' . '</li>';
-            }
-
-            return $output;
-        }
+        $data = $request->all();
+        $kl = Subject::all()->pluck('name');
+        $subjects = Subject::where('name', 'LIKE', '%' . $data['name'] . '%')->get();
+        return view('students.admin.subjects.index')->with('subjects', $subjects)->with('kl', $kl);
     }
 }

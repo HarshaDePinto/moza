@@ -59,9 +59,6 @@
         }
     </style>
 
-    {{-- Trix Editor --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.css">
-
 @endsection
 
 @section('content')
@@ -70,14 +67,14 @@
 
         <div class="card">
             <div class="card-header d-flex align-items-center">
-            <h4><a class="navbar-brand" href="{{route('stuLev.index')}}"><i class="fa fa-caret-square-o-left" style="font-size:20px"></i></a> <i class="icon-check"></i> Find An Educational Level <a class="navbar-brand" href="#addLevel"><i class="mx-4 fa fa-plus-circle" style="font-size:20px;color:green"></i></a></h4>
+            <h4><a class="navbar-brand" href="{{route('stuSub.index')}}"><i class="fa fa-caret-square-o-left" style="font-size:20px"></i></a> <i class="icon-check"></i> Find A Subject </h4>
             </div>
             <div class="card-body">
 
-                <form autocomplete="off" action="{{route('stLevName')}}" method="POST">
+                <form autocomplete="off" action="{{route('stSubName')}}" method="POST">
                     @csrf
                       <div class="autocomplete" style="width:300px;">
-                        <input id="myInput" type="text" name="name" placeholder="Educational Level">
+                        <input id="myInput" type="text" name="name" placeholder="Subject">
                       </div>
                       <button type="submit" class="mr-3 btn btn-primary"> <i class="fa fa-search" style="font-size:48px"></i></button>
                   </form>
@@ -95,15 +92,15 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header">
-                <h4>Levels of the NZQF</h4>
+                <h4>All Subjects</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table table-striped table-hover">
                     <thead>
                       <tr>
+                        <th>Subject</th>
                         <th>Level</th>
-                        <th>Subjects</th>
                         <th>Cources</th>
                         <th>Students</th>
                         <th>Colleges</th>
@@ -111,24 +108,24 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @foreach ($levels as $level)
+                        @foreach ($subjects as $sub)
                         <tr>
-                          <th>
-                          <a href="{{route('stuLev.show',$level->id)}}">{{$level->name}}</a>
-
-                          </th>
-                          <th>
-
-                                  {{$level->subjects->count()}}
-
-
-                          </th>
-                          <td>12</td>
-                          <td>12</td>
-                          <td>12</td>
-                          <td>
-                            {{$level->updated_at->diffForHumans()}}<br> {{$level->author}}
-                          </td>
+                            <th>
+                              <a href="{{route('stuSub.show',$sub->id)}}">
+                                {{$sub->name}}
+                                </a>
+                            </th>
+                            <th>
+                                @if ($sub->level)
+                                {{$sub->level->name}}
+                                @endif
+                            </th>
+                            <td>12</td>
+                            <td>12</td>
+                            <td>12</td>
+                            <td>
+                                {{$sub->updated_at->diffForHumans()}}<br> {{$sub->author}}
+                            </td>
                         </tr>
                         @endforeach
 
@@ -144,36 +141,6 @@
         </div>
     </div>
 
-    <div id="addLevel" class="container-fluid">
-
-        <div class="card">
-            <div class="card-header d-flex align-items-center">
-              <h4> <i class="icon-check"></i> Add Levels of the NZQF</h4>
-            </div>
-            <div class="card-body">
-              <form class="form-horizontal" action="{{route('stuLev.store')}}" method="POST">
-                @csrf
-
-
-
-                <div class="form-group">
-                  <label for="name" >NZQF Level</label>
-                  <input id="name" name="name" type="text"  class="mr-3 form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="des" >Description</label>
-                    <input id="des" type="hidden" name="des">
-                                    <trix-editor input="des"></trix-editor>
-
-                </div>
-                <input id="author" name="author" type="text"  value="{{ Auth::user()->name}}" hidden>
-                <div class="form-group">
-                  <input type="submit" value="Add" class="mr-3 btn btn-primary">
-                </div>
-              </form>
-            </div>
-          </div>
-    </div>
 
 @endsection
 

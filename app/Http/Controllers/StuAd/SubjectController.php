@@ -4,6 +4,9 @@ namespace App\Http\Controllers\StuAd;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Student\Level;
+use App\Student\Subject;
+use Mockery\Matcher\Subset;
 
 class SubjectController extends Controller
 {
@@ -14,6 +17,8 @@ class SubjectController extends Controller
      */
     public function index()
     {
+        $kl = Subject::all()->pluck('name');
+        return view('students.admin.subjects.index')->with('subjects', Subject::orderBy('updated_at', 'desc')->get())->with('kl', $kl);
     }
 
     /**
@@ -34,7 +39,16 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Subject::create([
+            'name' => $request->name,
+            'des' => $request->des,
+            'level_id' => $request->level_id,
+            'author' => $request->author
+
+        ]);
+
+        session()->flash('success',  'Subject Added Successfully!!!');
+        return redirect(route('stuSub.index'));
     }
 
     /**
@@ -80,5 +94,11 @@ class SubjectController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addSub($id)
+    {
+        $level = Level::where('id', $id)->firstOrFail();
+        return view('students.admin.subjects.create')->with('level', $level);
     }
 }
