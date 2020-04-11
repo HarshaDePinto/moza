@@ -146,6 +146,8 @@
   <script src="{{ asset('public/moza/contactform/contactform.js') }}"></script>
 
   <script src="{{ asset('public/moza/js/main.js') }}"></script>
+
+  @yield('scripts')
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 
-@extends('layouts.adStudent')
+@extends('layouts.adstudent')
 
 @section('styles')
 
